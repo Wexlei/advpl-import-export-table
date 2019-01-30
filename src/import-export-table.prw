@@ -155,7 +155,7 @@ Static Function fImport(cFile, cTable)
 	nHandle := FCreate(cLog)
 	FT_FUSE(cLog)
 
-	FWrite(nHandle, "Importation started in: " + cValToChar(Date()) + " - " + Time() + CRLF)
+	FWrite(nHandle, "Importation started at: " + cValToChar(Date()) + " - " + Time() + CRLF)
 	dbSelectArea(cTable)
 	dbSetOrder(1)
 	aStruct := DBStruct() // Loads table structure
@@ -191,7 +191,7 @@ Static Function fImport(cFile, cTable)
 	FClose(nHandle) // Finalizes and closes log file
 
 	If Len(aErrors) > 0
-		MessageBox("Errors where found during de proccess, check the log for details.", "Attention", 48)
+		MessageBox("Errors were found during the process, check log file for details.", "Attention", 48)
 	Else
 		MessageBox("Importation completed successfully.", "Attention", 64)
 	EndIf
@@ -479,7 +479,7 @@ Static Function fExport(cTable)
 	oFWMsExcel:GetXMLFile(cFile)
 	oExcel:WorkBooks:Open(cFile) // Opens the sheet
 	oExcel:SetVisible(.T.)       // Shows the sheet
-	oExcel:Destroy()             // Ends the task manager proccess
+	oExcel:Destroy()             // Ends the task manager process
 
 	(cTable)->(DbCloseArea())
 	RestArea(aArea)
