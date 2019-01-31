@@ -270,7 +270,7 @@ Static Function fValidInfo()
 Return Empty(aErrors)
 
 /**
- * fImportInfo inserts the data directly on the table.
+ * fImportInfo inserts the data directly into the table.
  *
  * @param cTable, Character, target table name
  * @author Wexlei Silveira
@@ -445,11 +445,16 @@ Static Function fExport(cTable)
 
 			ElseIf aStruct[nIndex, 2] == "C"
 				// Replaces reserved XML Characters for XML escape characters
-				cChar := StrTran(&(cTable + "->" + aStruct[nIndex, 1]), "&", "&amp")
-				cChar := StrTran(cChar, '"', "&quot")
-				cChar := StrTran(cChar, "'", "&apos")
-				cChar := StrTran(cChar, "<", "&lt")
-				cChar := StrTran(cChar, ">", "&gt")
+				cChar := StrTran(&(cTable + "->" + aStruct[nIndex, 1]), "&", "&amp;")
+				cChar := StrTran(cChar, '"', "&quot;")
+				cChar := StrTran(cChar, "'", "&apos;")
+				cChar := StrTran(cChar, "<", "&lt;")
+				cChar := StrTran(cChar, ">", "&gt;")
+
+				If aStruct[nIndex, 1] == "X3_USADO" .Or. aStruct[nIndex, 1] == "X3_RESERV"
+					cChar := Bin2Str(cChar)
+				EndIf
+
 				aAdd(aLine, cChar)
 
 			Else
