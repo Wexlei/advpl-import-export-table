@@ -46,7 +46,7 @@ User Function ImpExpTable()
 Return nil
 
 /**
- * Init shows the visual interface and call the import/export functions
+ * Init shows the visual interface and also calls the import/export functions
  *
  * @author Wexlei Silveira
  * @since 27/11/2018
